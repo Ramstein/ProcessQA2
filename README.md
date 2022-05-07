@@ -1,0 +1,11 @@
+# ProcessQA2
+
+A Question Answering app. I named it ProcessQA (Process Question Answer). I already have previously had a lot of experiences with Watson, jeopardy competition, Watson discovery, and fuzzy-wuzzy logic. So using these, I built a question answering app. The ProcessQA works like this, enter the subject code of which you want to get the answer, enter the number of questions you want to be answered, schedule asking questions if you want, then ProcessQA will ask questions at the scheduled time, one after another to the number of question entered and will simultaneously find the answer from books data using fuzzy-wuzzy, Watson discovery and AWS Services as following. After that, it will dictate to you the answers so that we don’t have any problem even in writing the answer to questions. There are a lot of features and customization in-app. ProcessQA got downloads of around 100,000 in AKTU University (having enrolled students around 400,000 in each session).
+
+On the backend side, I have been using the following technologies.
+1. AWS Textract - As the photos of the question have been sent from an API extract, I have been directly feeding these photos to Textract, as there is
+no better OCR tech available than the AWS Textract. AWS Textract has been returning the data in JSON having BoundingBox, Polygon, Id, Relationships, BlockType, etc.
+
+2. AWS Comprehend, AWS Comprehend Medical - We have been earlier using the Hugging Face (BERT, DistilBert) for NLP tasks like Text Classification, Information Extraction, Question Answering, Summarization, Translation, Text Generation as the precise question answering more than just BERT and DistilBert concept of grabbing a part of the paragraph as an answer so we started employing the AWS Comprehend and AWS Comprehend Medical which focuses on the intent and context of paragraphs, instead of basic keywords. AWS Comprehend Medical was mostly being used for analyzing medical-related books, and articles.
+
+3. AWS Kendra - It is costly using it for even one month, min of $810 per month, but we still decided to use it as it is the best for using NLP with context and intent, adding more data, in improving over time automatically to get better answers upfront for question answers queries.
